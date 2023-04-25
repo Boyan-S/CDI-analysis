@@ -392,7 +392,10 @@ def calcPRTF_GA(path, scannum, rec, gen, nPoints = 31, plot=False):
         plt.ylim(0,np.max(PRTF)+0.2)
         plt.xlabel('Q [rad/nm]')
         plt.ylabel('PRTF')
-        plt.title('Scan '+str(scannum) + '\n' + 'Resolution = '+str(int(resPRTF))+' nm')
+        try:
+        	plt.title('Scan '+str(scannum) + '\n' + 'Resolution = '+str(int(resPRTF))+' nm')
+        except ValueError:
+        	plt.title('Scan '+str(scannum) + '\n' + 'Resolution = nan')
         plt.savefig('Scan_'+str(scannum)+'_PRTF')
         plt.show()
     return qPoints, PRTF, resPRTF
